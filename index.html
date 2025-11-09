@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WAWA STORE - Payment Gateway</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 500px;
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background-color: #d32f2f;
+            color: white;
+            padding: 25px 20px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 32px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+        
+        .header p {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+        
+        .content {
+            padding: 25px;
+        }
+        
+        .payment-methods {
+            margin-top: 20px;
+        }
+        
+        .payment-method {
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-left: 4px solid #d32f2f;
+            transition: all 0.3s ease;
+        }
+        
+        .payment-method:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .payment-method h3 {
+            color: #d32f2f;
+            margin-bottom: 8px;
+            font-size: 18px;
+        }
+        
+        .payment-details {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .account-number {
+            font-size: 16px;
+            font-weight: 600;
+            color: #333;
+        }
+        
+        .account-name {
+            font-size: 14px;
+            color: #666;
+        }
+        
+        .copy-btn {
+            background-color: #d32f2f;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 6px 12px;
+            font-size: 12px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .copy-btn:hover {
+            background-color: #b71c1c;
+        }
+        
+        .telegram-section {
+            margin-top: 25px;
+            text-align: center;
+            padding: 15px;
+            background-color: #f0f0f0;
+            border-radius: 10px;
+        }
+        
+        .telegram-section h3 {
+            color: #d32f2f;
+            margin-bottom: 10px;
+        }
+        
+        .telegram-btn {
+            display: inline-block;
+            background-color: #0088cc;
+            color: white;
+            text-decoration: none;
+            padding: 12px 25px;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+        
+        .telegram-btn:hover {
+            background-color: #0077b5;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 136, 204, 0.3);
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 15px;
+            background-color: #f5f5f5;
+            color: #777;
+            font-size: 14px;
+        }
+        
+        .notification {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #4caf50;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 5px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+            opacity: 0;
+            transition: opacity 0.3s;
+            z-index: 1000;
+        }
+        
+        .notification.show {
+            opacity: 1;
+        }
+        
+        @media (max-width: 480px) {
+            .container {
+                border-radius: 10px;
+            }
+            
+            .header h1 {
+                font-size: 26px;
+            }
+            
+            .payment-details {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .copy-btn {
+                margin-top: 8px;
+                align-self: flex-end;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>WELCOME AYASE</h1>
+            <p>Silakan pilih metode pembayaran yang tersedia</p>
+        </div>
+        
+        <div class="content">
+            <div class="payment-methods">
+                <div class="payment-method">
+                    <h3>DANA</h3>
+                    <div class="payment-details">
+                        <div>
+                            <div class="account-number">0881010703290</div>
+                            <div class="account-name">N/A: DARXXX</div>
+                        </div>
+                        <button class="copy-btn" data-account="0881010703290">Salin</button>
+                    </div>
+                </div>
+                
+                <div class="payment-method">
+                    <h3>GOPAY</h3>
+                    <div class="payment-details">
+                        <div>
+                            <div class="account-number">085328926698</div>
+                            <div class="account-name">N/A: WAWA</div>
+                        </div>
+                        <button class="copy-btn" data-account="085328926698">Salin</button>
+                    </div>
+                </div>
+                
+                <div class="payment-method">
+                    <h3>OVO</h3>
+                    <div class="payment-details">
+                        <div>
+                            <div class="account-number">085814448535</div>
+                            <div class="account-name">N/A: WAWA</div>
+                        </div>
+                        <button class="copy-btn" data-account="085814448535">Salin</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="telegram-section">
+                <h3>Bergabung dengan Grup Telegram Kami</h3>
+                <p>Dapatkan informasi terbaru dan promo menarik</p>
+                <a href="https://t.me/+ZsKSUlohGb5mYzk9" target="_blank" class="telegram-btn">
+                    Gabung Grup Telegram
+                </a>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>WAWA STORE &copy; 2023 - All Rights Reserved</p>
+        </div>
+    </div>
+    
+    <div class="notification" id="notification">Nomor berhasil disalin!</div>
+    
+    <script>
+        // Fungsi untuk menyalin nomor rekening
+        document.querySelectorAll('.copy-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                const accountNumber = this.getAttribute('data-account');
+                navigator.clipboard.writeText(accountNumber).then(() => {
+                    showNotification();
+                });
+            });
+        });
+        
+        // Fungsi untuk menampilkan notifikasi
+        function showNotification() {
+            const notification = document.getElementById('notification');
+            notification.classList.add('show');
+            
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 2000);
+        }
+    </script>
+</body>
+</html>
